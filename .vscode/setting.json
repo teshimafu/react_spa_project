@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "tslint.autoFixOnSave": true,
+  "tslint.packageManager": "yarn",
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "prettier.printWidth": 120,
+  "editor.snippetSuggestions": "top",
+  "prettier.trailingComma": "es5"
+}
