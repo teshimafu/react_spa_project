@@ -23,8 +23,14 @@ func Start() {
 	allowedHeaders := handlers.AllowedHeaders([]string{"Authorization"})
 
 	r := mux.NewRouter()
-	r.HandleFunc("/public", public)
-	r.HandleFunc("/private", private)
+	// 静的ファイルの提供
+	// $PROROOT/assets/about.html が http://localhost:8080/assets/about.html でアクセスできる
+	r.Handle("/", http.FileServer(http.Dir("./build")))
+	r.PathPrefix("/build/").Handler(http.StripPrefix("/build/", http.FileServer(http.Dir("./build"))))
+	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./build/static"))))
+
+	r.HandleFunc("/api/public", public)
+	r.HandleFunc("/api/private", private)
 
 	log.Fatal(http.ListenAndServe(":8000", handlers.CORS(allowedOrigins, allowedMethods, allowedHeaders)(r)))
 
