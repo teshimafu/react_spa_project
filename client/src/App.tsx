@@ -4,7 +4,7 @@ import './App.css';
 
 import logo from './logo.svg';
 
-const server = 'http://localhost:8000/public';
+const server = '/api/public';
 
 /** Helloコンポーネントのstateの型定義 */
 interface IHelloState {
