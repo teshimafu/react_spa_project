@@ -1,8 +1,7 @@
 import axios from 'axios';
 import * as React from 'react';
+import { Button, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import './App.css';
-
-import logo from './logo.svg';
 
 const server = '/api/public';
 
@@ -13,7 +12,7 @@ interface IHelloState {
 
 class App extends React.Component<{}, IHelloState> {
 
-  constructor(props: {}){
+  constructor(props: {}) {
     super(props);
     this.state = {
       outputName: ""
@@ -24,23 +23,33 @@ class App extends React.Component<{}, IHelloState> {
     const self = this;
     axios.get(server)
       .then((res) => {
-        self.setState({outputName:res.data});
+        self.setState({ outputName: res.data });
       })
   }
 
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <button onClick={this.handleClick}>ぼたん</button>
-        <div>{this.state.outputName}</div>
-      </div>
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse>
+          <Nav id="basic-navbar-nav" className="mr-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#link">Link</Nav.Link>
+            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <Form>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <Button variant="outline-success">Search</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
