@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import * as firebase from 'firebase/app';
 import 'firebase/auth'
 
 const config = {
@@ -10,4 +10,6 @@ const config = {
     storageBucket: "homepage-232202.appspot.com"
 };
 
-initializeApp(config)
+firebase.initializeApp(config)
+
+export default firebase

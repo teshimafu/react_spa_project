@@ -9,7 +9,8 @@ export default createStore(
 )
 
 export interface ReduxState {
-    counter: CounterState
+    counter: CounterState,
+    user: firebase.User | null
 }
 
 export type ReduxAction = CounterActions | Action
