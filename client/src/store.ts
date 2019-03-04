@@ -1,16 +1,12 @@
-import counter, { CounterActions, CounterState } from './modules/module'
-// tslint:disable-next-line: ordered-imports
-import { createStore, combineReducers, Action } from 'redux'
+import { combineReducers, createStore } from 'redux'
+import { homeReducer, CounterState } from './modules/module'
 
 export default createStore(
     combineReducers({
-        counter
+        homeReducer
     })
 )
 
 export interface ReduxState {
-    counter: CounterState,
-    user: firebase.User | null
+    counter: CounterState
 }
-
-export type ReduxAction = CounterActions | Action

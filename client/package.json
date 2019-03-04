@@ -13,7 +13,9 @@
     "react-dom": "^16.8.2",
     "react-redux": "^6.0.1",
     "react-scripts-ts": "^4.0.8",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "typescript-fsa": "^3.0.0-beta-2",
+    "typescript-fsa-reducers": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",

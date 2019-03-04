@@ -1,22 +1,22 @@
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
+import { Dispatch, Action } from 'redux'
 import { Counter } from '../modules/Counter'
-import { decrementAmount, incrementAmount } from '../modules/module'
-import { ReduxAction, ReduxState } from '../store'
+import { counterActions } from '../modules/module'
+import { ReduxState } from '../store'
 
-export class ActionDispatcher {
-    constructor(private dispatch: (action: ReduxAction) => void) { }
+export interface ICounterActions {
+    increment: (amount: number) => Action<string>;
+    decrement: (amount: number) => Action<string>;
+}
 
-    public increment(amount: number) {
-        this.dispatch(incrementAmount(amount))
-    }
-
-    public decrement(amount: number) {
-        this.dispatch(decrementAmount(amount))
-    }
+function mapDispatchToProps(dispatch: Dispatch<Action<string>>) {
+    return {
+        increment: (amount: number) => dispatch(counterActions.incrementAmount(amount)),
+        decrement: (amount: number) => dispatch(counterActions.decrementAmount(amount))
+    };
 }
 
 export default connect(
     (state: ReduxState) => ({ value: state.counter }), // ①
-    (dispatch: Dispatch<ReduxAction>) => ({ actions: new ActionDispatcher(dispatch) }) // ②
+    mapDispatchToProps // ②
 )(Counter)

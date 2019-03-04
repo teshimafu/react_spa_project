@@ -1,28 +1,36 @@
 import * as React from "react";
-import { ActionDispatcher } from "../containers/Container";
 import { CounterState } from "./module";
+import { ICounterActions } from "../containers/Container";
 
 interface Props {
     value: CounterState;
-    actions: ActionDispatcher;
+    actions: ICounterActions;
 }
 
-export class Counter extends React.Component<Props, {}> {
+export class Counter extends React.Component<any> {
 
-    public decrease() {
-        return this.props.actions.decrement(2)
+    constructor(props: Props) {
+        super(props);
+
+        // tslint:disable-next-line: no-console
+        console.log(props)
+        // tslint:disable-next-line: no-console
+        console.log(this.props.actions)
     }
 
-    public increase(): void {
-        return this.props.actions.increment(3)
+    public componentDidMount() {
+        // tslint:disable-next-line: no-console
+        console.log(this.props)
     }
 
     public render() {
+        // const Increnent = () => this.props.actions!.increment(3);
+        const Decrenent = () => this.props.decrement(2);
         return (
             <div>
-                <p>score: {this.props.value.num} </p>
-                <button onClick={this.increase}> Increment 3 </button>
-                <button onClick={this.decrease}> Decrement 2 </button>
+                <p>score: {this.props.value && this.props.value.num}</p>
+                <button onClick={(e) => this.props.increment(3)}>Increment 3</button>
+                <button onClick={Decrenent}>Decrement 2</button>
             </div>
         )
     }
