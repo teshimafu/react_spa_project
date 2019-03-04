@@ -58,8 +58,10 @@ const initialState: CounterState = { num: 0 };
 
 export const homeReducer = reducerWithInitialState(initialState)
     .case(counterActions.incrementAmount, (state, amount) => {
-        return Object.assign({}, state, { amount });
+        // tslint:disable-next-line: no-console
+        console.log(amount + `in` + state.num);
+        return { num: state.num + amount };
     })
     .case(counterActions.decrementAmount, (state, amount) => {
-        return Object.assign({}, state, { amount });
+        return { num: state.num - amount };
     });

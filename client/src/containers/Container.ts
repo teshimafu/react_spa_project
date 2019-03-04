@@ -16,7 +16,11 @@ function mapDispatchToProps(dispatch: Dispatch<Action<string>>) {
     };
 }
 
+function mapStateToProps(state: ReduxState) {
+    return Object.assign({}, { value: state.counter });
+}
+
 export default connect(
-    (state: ReduxState) => ({ value: state.counter }), // ①
-    mapDispatchToProps // ②
+    mapStateToProps,
+    mapDispatchToProps
 )(Counter)
