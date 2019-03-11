@@ -1,15 +1,14 @@
-import counter, { CounterActions, CounterState } from './modules/module'
-// tslint:disable-next-line: ordered-imports
-import { createStore, combineReducers, Action } from 'redux'
+import { combineReducers, createStore } from 'redux'
+import { authReducer, UserInfo } from './reducers/AuthReducer';
 
-export default createStore(
-    combineReducers({
-        counter
+export type ReduxState = {
+    userInfo: UserInfo
+}
+
+const store = createStore(
+    combineReducers<ReduxState>({
+        userInfo: authReducer
     })
 )
 
-export interface ReduxState {
-    counter: CounterState
-}
-
-export type ReduxAction = CounterActions | Action
+export default store;

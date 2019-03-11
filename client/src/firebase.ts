@@ -1,13 +1,15 @@
-import { initializeApp } from 'firebase/app';
+import * as firebase from 'firebase/app';
 import 'firebase/auth'
 
 const config = {
-    apiKey: "AIzaSyDCe-yB2Z6h8Fr_Hc_f_9FGzIgCwuKtGMY",
+    apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
     authDomain: "homepage-232202.firebaseapp.com",
     databaseURL: "https://homepage-232202.firebaseio.com",
-    messagingSenderId: "10713409910",
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
     projectId: "homepage-232202",
     storageBucket: "homepage-232202.appspot.com"
 };
 
-initializeApp(config)
+firebase.initializeApp(config)
+
+export default firebase

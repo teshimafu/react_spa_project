@@ -1,5 +1,5 @@
 {
-  "name": "self-management-app",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,13 +7,16 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "firebase": "^5.8.4",
+    "firebaseui": "^3.5.2",
     "npm": "^6.8.0",
     "react": "^16.8.2",
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.8.2",
     "react-redux": "^6.0.1",
-    "react-scripts-ts": "3.1.0",
-    "redux": "^4.0.1"
+    "react-scripts-ts": "^4.0.8",
+    "redux": "^4.0.1",
+    "typescript-fsa": "^3.0.0-beta-2",
+    "typescript-fsa-reducers": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",
@@ -27,5 +30,11 @@
     "@types/react": "^16.8.3",
     "@types/react-dom": "^16.8.2",
     "typescript": "^3.3.3"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
