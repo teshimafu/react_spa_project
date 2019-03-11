@@ -1,13 +1,13 @@
 import { combineReducers, createStore } from 'redux'
-import { homeReducer, CounterState } from './modules/module'
+import { authReducer, UserInfo } from './reducers/AuthReducer';
 
 export type ReduxState = {
-    counter: CounterState
+    userInfo: UserInfo
 }
 
 const store = createStore(
     combineReducers<ReduxState>({
-        counter: homeReducer
+        userInfo: authReducer
     })
 )
 

@@ -1,13 +1,13 @@
 import * as React from 'react'
 import './App.css'
-import Container from './containers/Container';
+import AuthContainer from './containers/AuthContainer';
 
 class App extends React.Component {
 
   public render() {
     return (
       <div className="App">
-        <Container />
+        <AuthContainer />
       </div>
     )
   }
