@@ -2,7 +2,6 @@ import * as React from "react";
 import actionCreatorFactory from 'typescript-fsa';
 import { ReduxState } from 'src/store';
 import { AuthActions } from 'src/containers/AuthContainer';
-import { UserInfo } from 'src/reducers/AuthReducer';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
 
 
