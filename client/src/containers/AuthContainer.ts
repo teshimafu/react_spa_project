@@ -1,10 +1,8 @@
 import { connect } from 'react-redux'
 import { Dispatch, Action } from 'redux'
 import { ReduxState } from '../store'
-import { authActions } from 'src/actions/AuthAction';
 import firebase from '../firebase'
-import { Auth } from '../modules/Auth'
-import { UserInfo } from 'src/reducers/AuthReducer';
+import { Auth, UserInfo, authActions } from '../modules/Auth'
 
 export interface AuthActions {
     login: () => Action<string>;
