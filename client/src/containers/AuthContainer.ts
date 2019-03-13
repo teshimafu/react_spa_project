@@ -6,7 +6,7 @@ import { Auth, UserInfo, authActions } from '../modules/Auth'
 
 export interface AuthActions {
     login: () => Action<string>;
-    reflogin: () => Action<string>;
+    refLogin: () => Action<string>;
     logout: () => Action<string>;
 }
 
@@ -46,7 +46,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action<string>>) {
 }
 
 function mapStateToProps(state: ReduxState) {
-    return Object.assign({}, { value: state.userInfo });
+    return Object.assign({}, { userInfo: state.userInfo });
 }
 
 export default connect(

@@ -10,7 +10,6 @@ const actionCreator = actionCreatorFactory();
 
 export const authActions = {
     login: actionCreator<UserInfo>('auth/login'),
-    reflogin: actionCreator('auth/reflogin'),
     logout: actionCreator('auth/logout')
 };
 
@@ -31,17 +30,9 @@ export const authReducer = reducerWithInitialState<UserInfo>(initialState)
         return Object.assign({}, initialState)
     });
 
+type Props = ReduxState & AuthActions;
 
-interface Props {
-    value: UserInfo;
-    actions: AuthActions;
-}
-
-export class Auth extends React.Component<any, ReduxState> {
-
-    constructor(props: Props) {
-        super(props);
-    }
+export class Auth extends React.Component<Props> {
 
     public componentDidMount() {
         this.props.refLogin()
@@ -51,9 +42,9 @@ export class Auth extends React.Component<any, ReduxState> {
         return (
             <div className="App">
                 <p className="App-intro">
-                    You: {this.props.value.uid ? this.props.value.displayName : 'お前誰や'}
+                    You: {this.props.userInfo.uid ? this.props.userInfo.displayName : 'お前誰や'}
                 </p>
-                {this.props.value.uid ? (
+                {this.props.userInfo.uid ? (
                     <button onClick={this.props.logout}>Google Logout</button>
                 ) : (
                         <button onClick={this.props.login}>Google Login</button>
