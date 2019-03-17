@@ -2,7 +2,8 @@ import { connect } from 'react-redux'
 import { Dispatch, Action } from 'redux'
 import { ReduxState } from '../store'
 import firebase from '../firebase'
-import { Auth, UserInfo, authActions } from '../modules/Auth'
+import { UserInfo, authActions } from '../modules/Auth'
+import { Home } from 'src/modules/Home';
 
 export interface AuthActions {
     login: () => Action<string>;
@@ -52,4 +53,4 @@ function mapStateToProps(state: ReduxState) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Auth)
+)(Home)

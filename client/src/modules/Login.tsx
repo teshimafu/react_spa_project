@@ -1,23 +1,26 @@
-import { connect } from 'react-redux'
-import { Dispatch, Action } from 'redux'
-import { ReduxState } from '../store'
+import { Props, authActions } from './Auth';
+import * as React from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { ReduxState } from 'src/store';
+import { Dispatch, Action } from 'redux';
 import firebase from '../firebase'
-import { Auth, UserInfo, authActions } from '../modules/Auth'
+import { setUserInfo } from 'src/containers/AuthContainer';
 
-export interface AuthActions {
-    login: () => Action<string>;
-    refLogin: () => Action<string>;
-    logout: () => Action<string>;
-}
+class Login extends React.Component<Props> {
 
-export function setUserInfo(fuser: firebase.User | null): UserInfo {
-    if (!fuser) {
-        return {}
+    public componentWillReceiveProps() {
+        this.props.refLogin()
     }
-    return {
-        displayName: fuser.displayName,
-        email: fuser.email,
-        uid: fuser.uid
+
+    public render() {
+        return (
+            this.props.userInfo.uid ? (
+                <Redirect to={'/'} />
+            ) : (
+                    <button onClick={this.props.login}>Google Login</button>
+                )
+        );
     }
 }
 
@@ -52,4 +55,4 @@ function mapStateToProps(state: ReduxState) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Auth)
+)(Login);
