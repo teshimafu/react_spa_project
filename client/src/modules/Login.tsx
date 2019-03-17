@@ -32,18 +32,6 @@ function mapDispatchToProps(dispatch: Dispatch<Action<string>>) {
                 .then(response => {
                     dispatch(authActions.login(setUserInfo(response.user)))
                 })
-        },
-        refLogin: () => {
-            firebase.auth().onAuthStateChanged(user => {
-                if (!user) {
-                    return
-                }
-                dispatch(authActions.login(setUserInfo(user)))
-            })
-        },
-        logout: () => {
-            firebase.auth().signOut()
-            dispatch(authActions.logout())
         }
     };
 }

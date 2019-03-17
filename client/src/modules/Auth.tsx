@@ -46,16 +46,6 @@ export class Auth extends React.Component<Props> {
             ) : (
                     <Redirect to={'/login'} />
                 )
-            // <div className="App">
-            //     <p className="App-intro">
-            //         You: {this.props.userInfo.uid ? this.props.userInfo.displayName : 'お前誰や'}
-            //     </p>
-            //     {this.props.userInfo.uid ? (
-            //         <button onClick={this.props.logout}>Google Logout</button>
-            //     ) : (
-            //             <button onClick={this.props.login}>Google Login</button>
-            //         )}
-            // </div>
         )
     }
 }
