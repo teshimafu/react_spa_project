@@ -6,10 +6,6 @@ export type Props = ReduxState & AuthActions;
 
 export class Home extends React.Component<Props> {
 
-    public componentDidMount() {
-        this.props.refLogin()
-    }
-
     public render() {
         return (
             <div className="App">

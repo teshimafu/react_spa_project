@@ -9,10 +9,6 @@ import { setUserInfo } from 'src/containers/AuthContainer';
 
 class Login extends React.Component<Props> {
 
-    public componentWillReceiveProps() {
-        this.props.refLogin()
-    }
-
     public render() {
         return (
             this.props.userInfo.uid ? (
