@@ -35,8 +35,11 @@ export type Props = ReduxState & AuthActions;
 
 export class Auth extends React.Component<Props> {
 
+    private isLoading: boolean = true
+
     public componentDidMount() {
         this.props.refLogin()
+        this.isLoading = false
     }
 
     public render() {
@@ -44,7 +47,10 @@ export class Auth extends React.Component<Props> {
             this.props.userInfo.uid ? (
                 <Route children={this.props.children} />
             ) : (
-                    <Redirect to={'/login'} />
+                    this.isLoading ? (
+                        <div>Loading</div>
+                    ) :
+                        <Redirect to={'/login'} />
                 )
         )
     }

@@ -5,11 +5,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './modules/Login';
 import HomeContainer from './containers/HomeContainer';
 
-class App extends React.Component {
+class App extends React.Component<any> {
 
-  public componentDidMount() {
-    console.log(this)
-  }
   public render() {
     return (
       <BrowserRouter>
@@ -17,7 +14,7 @@ class App extends React.Component {
           <Route exact={true} path='/login' component={Login} />
           <AuthContainer>
             <Switch>
-              <Route path="/" component={HomeContainer} />
+              <Route exact={true} path="/" component={HomeContainer} />
             </Switch>
           </AuthContainer>
         </Switch>
