@@ -3,22 +3,28 @@ import './App.css'
 import AuthContainer from './containers/AuthContainer';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './modules/Login';
-import HomeContainer from './containers/HomeContainer';
+import { Home } from './modules/Home';
+import NavigationBarContainer from './containers/NavigationBarContainer';
 
 class App extends React.Component<any> {
 
   public render() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact={true} path='/login' component={Login} />
-          <AuthContainer>
-            <Switch>
-              <Route exact={true} path="/" component={HomeContainer} />
-            </Switch>
-          </AuthContainer>
-        </Switch>
-      </BrowserRouter>
+      <div className="App">
+        <BrowserRouter>
+          <Switch>
+            <Route exact={true} path='/login' component={Login} />
+            <AuthContainer>
+              <div>
+                <NavigationBarContainer />
+                <Switch>
+                  <Route exact={true} path="/" component={Home} />
+                </Switch>
+              </div>
+            </AuthContainer>
+          </Switch>
+        </BrowserRouter>
+      </div>
     )
   }
 }

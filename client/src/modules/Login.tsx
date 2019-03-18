@@ -6,6 +6,7 @@ import { ReduxState } from 'src/store';
 import { Dispatch, Action } from 'redux';
 import firebase from '../firebase'
 import { setUserInfo } from 'src/containers/AuthContainer';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 
 class Login extends React.Component<Props> {
 
@@ -14,7 +15,13 @@ class Login extends React.Component<Props> {
             this.props.userInfo.uid ? (
                 <Redirect to={'/'} />
             ) : (
-                    <button onClick={this.props.login}>Google Login</button>
+                    <Container>
+                        <Row className="justify-content-md-center">
+                            <Col>
+                                <Button variant="outline-info" onClick={this.props.login}>Google Login</Button>
+                            </Col>
+                        </Row>
+                    </Container>
                 )
         );
     }
