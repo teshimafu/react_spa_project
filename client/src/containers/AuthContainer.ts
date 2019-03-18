@@ -10,7 +10,7 @@ export interface AuthActions {
     logout: () => Action<string>;
 }
 
-function setUserInfo(fuser: firebase.User | null): UserInfo {
+export function setUserInfo(fuser: firebase.User | null): UserInfo {
     if (!fuser) {
         return {}
     }

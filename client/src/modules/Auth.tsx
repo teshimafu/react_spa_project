@@ -3,6 +3,7 @@ import actionCreatorFactory from 'typescript-fsa';
 import { ReduxState } from 'src/store';
 import { AuthActions } from 'src/containers/AuthContainer';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
+import { Route, Redirect } from 'react-router';
 
 
 // action
@@ -30,26 +31,27 @@ export const authReducer = reducerWithInitialState<UserInfo>(initialState)
         return Object.assign({}, initialState)
     });
 
-type Props = ReduxState & AuthActions;
+export type Props = ReduxState & AuthActions;
 
 export class Auth extends React.Component<Props> {
 
+    private isLoading: boolean = true
+
     public componentDidMount() {
         this.props.refLogin()
+        this.isLoading = false
     }
 
     public render() {
         return (
-            <div className="App">
-                <p className="App-intro">
-                    You: {this.props.userInfo.uid ? this.props.userInfo.displayName : 'お前誰や'}
-                </p>
-                {this.props.userInfo.uid ? (
-                    <button onClick={this.props.logout}>Google Logout</button>
-                ) : (
-                        <button onClick={this.props.login}>Google Login</button>
-                    )}
-            </div>
+            this.props.userInfo.uid ? (
+                <Route children={this.props.children} />
+            ) : (
+                    this.isLoading ? (
+                        <div>Loading</div>
+                    ) :
+                        <Redirect to={'/login'} />
+                )
         )
     }
 }
