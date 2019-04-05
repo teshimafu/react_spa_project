@@ -6,7 +6,7 @@ export class NavigationBar extends React.Component<any> {
     public render() {
         return (
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse>
                     <Nav id="basic-navbar-nav" className="mr-auto">
